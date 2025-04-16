@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="820" height="1200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="820" height="1200" fill="#f8f9fa" />
+    
+    <!-- 标题 -->
+    <text x="410" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Reassembler 处理的关键场景</text>
+    
+    <!-- 案例1：按序到达的子串 -->
+    <rect x="50" y="80" width="720" height="130" rx="10" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" />
+    <text x="410" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例1：按序到达的子串(直接写入)</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="130" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="130" width="150" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="175" y="160" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 新到子串 -->
+    <rect x="250" y="130" width="150" height="50" fill="#91d5ff" stroke="#1890ff" stroke-width="2" />
+    <text x="325" y="160" font-family="Arial" font-size="14" text-anchor="middle">新子串(index=N)</text>
+    
+    <!-- 箭头到输出 -->
+    <path d="M325,180 L325,200" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="375" y="195" font-family="Arial" font-size="12" text-anchor="start" fill="#1890ff">直接写入ByteStream</text>
+    
+    <!-- 案例2：乱序到达的子串 -->
+    <rect x="50" y="230" width="720" height="130" rx="10" fill="#fff2e8" stroke="#fa541c" stroke-width="2" />
+    <text x="410" y="260" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例2：乱序到达的子串(需要存储)</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="280" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="280" width="150" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="175" y="310" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 空洞区域 -->
+    <rect x="250" y="280" width="100" height="50" fill="#fff" stroke="#d9d9d9" stroke-width="1" stroke-dasharray="5,5" />
+    <text x="300" y="310" font-family="Arial" font-size="14" text-anchor="middle" fill="#bfbfbf">空洞</text>
+    
+    <!-- 新到子串 -->
+    <rect x="350" y="280" width="150" height="50" fill="#ffbb96" stroke="#fa541c" stroke-width="2" />
+    <text x="425" y="310" font-family="Arial" font-size="14" text-anchor="middle">新子串(index>N)</text>
+    
+    <!-- 箭头到存储 -->
+    <path d="M425,330 L425,350" stroke="#fa541c" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="475" y="345" font-family="Arial" font-size="12" text-anchor="start" fill="#fa541c">存储至unassembled_</text>
+    
+    <!-- 案例3：已处理区域重叠的子串 -->
+    <rect x="50" y="380" width="720" height="130" rx="10" fill="#f9f0ff" stroke="#722ed1" stroke-width="2" />
+    <text x="410" y="410" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例3：与已处理区域重叠的子串</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="430" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="430" width="250" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="225" y="460" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 新到子串 -->
+    <rect x="200" y="430" width="200" height="50" fill="#d3adf7" stroke="#722ed1" stroke-width="2" />
+    <text x="300" y="460" font-family="Arial" font-size="14" text-anchor="middle">新子串(部分重叠)</text>
+    
+    <!-- 箭头到处理逻辑 -->
+    <path d="M300,480 L300,500" stroke="#722ed1" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="350" y="495" font-family="Arial" font-size="12" text-anchor="start" fill="#722ed1">截取未处理部分并写入/存储</text>
+    
+    <!-- 案例4：与待处理子串重叠 -->
+    <rect x="50" y="530" width="720" height="180" rx="10" fill="#fcffe6" stroke="#a0d911" stroke-width="2" />
+    <text x="410" y="560" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例4：与待处理子串重叠的情况</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="580" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="580" width="150" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="175" y="610" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 待处理子串 -->
+    <rect x="350" y="580" width="150" height="50" fill="#fffb8f" stroke="#a0d911" stroke-width="1" />
+    <text x="425" y="610" font-family="Arial" font-size="14" text-anchor="middle">已存储子串</text>
+    
+    <!-- 新到子串 -->
+    <rect x="250" y="630" width="200" height="50" fill="#eaff8f" stroke="#a0d911" stroke-width="2" />
+    <text x="350" y="660" font-family="Arial" font-size="14" text-anchor="middle">新到子串(重叠)</text>
+    
+    <!-- 箭头指向合并结果 -->
+    <path d="M350,680 L350,700" stroke="#a0d911" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="400" y="695" font-family="Arial" font-size="12" text-anchor="start" fill="#a0d911">合并重叠子串</text>
+    
+    <!-- 案例5：超出容量的子串 -->
+    <rect x="50" y="730" width="720" height="130" rx="10" fill="#fff0f6" stroke="#eb2f96" stroke-width="2" />
+    <text x="410" y="760" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例5：超出容量的子串</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="780" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="780" width="150" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="175" y="810" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 容量限制 -->
+    <rect x="250" y="780" width="200" height="50" fill="#fff" stroke="#d9d9d9" stroke-width="1" stroke-dasharray="5,5" />
+    <text x="350" y="810" font-family="Arial" font-size="14" text-anchor="middle">可用容量</text>
+    
+    <!-- 超出容量 -->
+    <line x1="450" y1="770" x2="450" y2="840" stroke="#eb2f96" stroke-width="2" stroke-dasharray="5,3" />
+    <text x="450" y="760" font-family="Arial" font-size="12" text-anchor="middle" fill="#eb2f96">容量上限</text>
+    
+    <!-- 新到子串 -->
+    <rect x="400" y="780" width="250" height="50" fill="#ffadd2" stroke="#eb2f96" stroke-width="2" />
+    <text x="525" y="810" font-family="Arial" font-size="14" text-anchor="middle">新子串(部分超出容量)</text>
+    
+    <!-- 箭头指向处理结果 -->
+    <path d="M450,830 L450,850" stroke="#eb2f96" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="500" y="845" font-family="Arial" font-size="12" text-anchor="start" fill="#eb2f96">截取容量内部分</text>
+    
+    <!-- 案例6：结束标记处理 -->
+    <rect x="50" y="880" width="720" height="250" rx="10" fill="#f0f5ff" stroke="#2f54eb" stroke-width="2" />
+    <text x="410" y="910" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">案例6：结束标记(is_last_substring=true)处理</text>
+    
+    <!-- 字节流示意图 -->
+    <rect x="100" y="930" width="600" height="50" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    
+    <!-- 已处理区域 -->
+    <rect x="100" y="930" width="350" height="50" fill="#d9f7be" stroke="#d9d9d9" stroke-width="1" />
+    <text x="275" y="960" font-family="Arial" font-size="14" text-anchor="middle">已处理</text>
+    
+    <!-- 待处理区域 -->
+    <rect x="450" y="930" width="150" height="50" fill="#fffb8f" stroke="#d9d9d9" stroke-width="1" />
+    <text x="525" y="960" font-family="Arial" font-size="14" text-anchor="middle">待处理</text>
+    
+    <!-- EOF标记 -->
+    <rect x="600" y="930" width="50" height="50" fill="#adc6ff" stroke="#2f54eb" stroke-width="2" />
+    <text x="625" y="960" font-family="Arial" font-size="14" text-anchor="middle">EOF</text>
+    
+    <!-- 状态更新箭头 -->
+    <path d="M625,980 L625,1000" stroke="#2f54eb" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="675" y="995" font-family="Arial" font-size="12" text-anchor="start" fill="#2f54eb">记录EOF索引位置</text>
+    
+    <!-- 处理过程示意 -->
+    <rect x="100" y="1010" width="600" height="80" rx="5" fill="#f0f5ff" stroke="#2f54eb" stroke-width="1" stroke-dasharray="2,2" />
+    
+    <!-- 处理逻辑说明 -->
+    <text x="400" y="1030" font-family="Arial" font-size="14" text-anchor="middle">当收到is_last_substring=true时：</text>
+    <text x="400" y="1055" font-family="Arial" font-size="14" text-anchor="middle">1. 设置eof_ = true</text>
+    <text x="400" y="1080" font-family="Arial" font-size="14" text-anchor="middle">2. 记录eof_index_ = first_index + data.size()</text>
+    
+    <!-- 关闭流说明 -->
+    <text x="175" y="1110" font-family="Arial" font-size="14" text-anchor="middle" fill="#2f54eb" font-weight="bold">当next_index_ == eof_index_时：</text>
+    <text x="520" y="1110" font-family="Arial" font-size="14" text-anchor="middle" fill="#2f54eb">关闭输出流 output_.writer().close()</text>
+    
+    <!-- 箭头定义 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+        </marker>
+    </defs>
+    
+    <!-- 角落标注 -->
+    <text x="750" y="1190" font-family="Arial" font-size="12" text-anchor="end">CS144 Lab1 Reassembler Cases</text>
+</svg>
