@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="500" fill="#f8f9fa" />
+    
+    <!-- 标题 -->
+    <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">TCP Reassembler 架构图</text>
+    
+    <!-- 网络层 -->
+    <rect x="50" y="80" width="700" height="80" rx="10" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" />
+    <text x="400" y="125" font-family="Arial" font-size="20" text-anchor="middle">网络层（乱序子串、重叠子串、丢失子串、重复子串）</text>
+    
+    <!-- 箭头 -->
+    <path d="M400,160 L400,200" stroke="#1890ff" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- Reassembler组件 -->
+    <rect x="100" y="200" width="600" height="160" rx="10" fill="#f6ffed" stroke="#52c41a" stroke-width="2" />
+    <text x="400" y="230" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Reassembler</text>
+    
+    <!-- Reassembler内部结构 -->
+    <rect x="120" y="250" width="260" height="90" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    <text x="250" y="280" font-family="Arial" font-size="16" text-anchor="middle">已知下一字节的子串</text>
+    <text x="250" y="300" font-family="Arial" font-size="14" text-anchor="middle">直接写入ByteStream</text>
+    
+    <rect x="420" y="250" width="260" height="90" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    <text x="550" y="280" font-family="Arial" font-size="16" text-anchor="middle">存在空洞的子串</text>
+    <text x="550" y="300" font-family="Arial" font-size="14" text-anchor="middle">存储在map&lt;uint64_t, string&gt;</text>
+    
+    <!-- 箭头 -->
+    <path d="M400,360 L400,400" stroke="#52c41a" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+    
+    <!-- ByteStream -->
+    <rect x="150" y="400" width="500" height="60" rx="10" fill="#fff7e6" stroke="#fa8c16" stroke-width="2" />
+    <text x="400" y="435" font-family="Arial" font-size="20" text-anchor="middle">ByteStream (连续有序字节流)</text>
+    
+    <!-- 箭头定义 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+        </marker>
+    </defs>
+    
+    <!-- 角落标注 -->
+    <text x="710" y="490" font-family="Arial" font-size="12" text-anchor="end">CS144 Lab1 Reassembler</text>
+</svg>
