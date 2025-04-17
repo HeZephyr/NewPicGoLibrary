@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="500" fill="#f8f9fa" />
+    
+    <!-- 标题 -->
+    <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">ByteStream 架构设计</text>
+    
+    <!-- ByteStream类 -->
+    <rect x="100" y="80" width="600" height="80" rx="10" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" />
+    <text x="400" y="125" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">ByteStream 基类</text>
+    
+    <!-- 成员变量 -->
+    <rect x="130" y="170" width="540" height="100" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    <text x="400" y="195" font-family="Arial" font-size="16" text-anchor="middle">成员变量</text>
+    <text x="155" y="220" font-family="Arial" font-size="14" text-anchor="start">- uint64_t capacity_：字节流容量</text>
+    <text x="155" y="245" font-family="Arial" font-size="14" text-anchor="start">- std::string buffer_：内部缓冲区</text>
+    <text x="155" y="270" font-family="Arial" font-size="14" text-anchor="start">- bool closed_：流是否关闭</text>
+    <text x="400" y="245" font-family="Arial" font-size="14" text-anchor="start">- uint64_t bytes_pushed_：已推入字节数</text>
+    <text x="400" y="270" font-family="Arial" font-size="14" text-anchor="start">- uint64_t bytes_popped_：已弹出字节数</text>
+    
+    <!-- Writer类 -->
+    <rect x="100" y="290" width="280" height="180" rx="10" fill="#f6ffed" stroke="#52c41a" stroke-width="2" />
+    <text x="240" y="320" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Writer</text>
+    
+    <!-- Writer方法 -->
+    <rect x="120" y="340" width="240" height="110" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    <text x="140" y="360" font-family="Arial" font-size="14" text-anchor="start">+ push(string data)</text>
+    <text x="140" y="385" font-family="Arial" font-size="14" text-anchor="start">+ close()</text>
+    <text x="140" y="410" font-family="Arial" font-size="14" text-anchor="start">+ is_closed()</text>
+    <text x="140" y="435" font-family="Arial" font-size="14" text-anchor="start">+ available_capacity()</text>
+    
+    <!-- Reader类 -->
+    <rect x="420" y="290" width="280" height="180" rx="10" fill="#fff7e6" stroke="#fa8c16" stroke-width="2" />
+    <text x="560" y="320" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Reader</text>
+    
+    <!-- Reader方法 -->
+    <rect x="440" y="340" width="240" height="110" rx="5" fill="#fff" stroke="#d9d9d9" stroke-width="1" />
+    <text x="460" y="360" font-family="Arial" font-size="14" text-anchor="start">+ peek() : string_view</text>
+    <text x="460" y="385" font-family="Arial" font-size="14" text-anchor="start">+ pop(uint64_t len)</text>
+    <text x="460" y="410" font-family="Arial" font-size="14" text-anchor="start">+ is_finished()</text>
+    <text x="460" y="435" font-family="Arial" font-size="14" text-anchor="start">+ bytes_buffered()</text>
+    
+    <!-- 继承箭头 Writer -->
+    <path d="M240,290 L240,160 L400,160" stroke="#52c41a" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="270" y="220" font-family="Arial" font-size="12" text-anchor="start" fill="#52c41a">继承</text>
+    
+    <!-- 继承箭头 Reader -->
+    <path d="M560,290 L560,160 L400,160" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrowhead)" />
+    <text x="530" y="220" font-family="Arial" font-size="12" text-anchor="start" fill="#fa8c16">继承</text>
+    
+    <!-- 箭头定义 -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000" />
+        </marker>
+    </defs>
+    
+    <!-- 角落标注 -->
+    <text x="710" y="490" font-family="Arial" font-size="12" text-anchor="end">CS144 Lab0 ByteStream</text>
+</svg>
